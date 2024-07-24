@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Spring Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body>
+<div class="w-full h-full" th:fragment="home(products)">
+    <!--    <div th:replace="~{fragments/popup/addpopup :: addpopup}"></div>-->
+    <!--    <div th:replace="~{fragments/popup/updatepopup :: updatepopup}"></div>-->
+    <!--    <div th:replace="~{fragments/popup/deletepopup :: deletepopup}"></div>-->
+
+
+    <div class="flex flex-col items-center justify-center">
+        <!--    <div th:text="${errorCode + ' ' + errorDesc}"></div>-->
+        <br/>
+        <div th:replace="~{fragments/menu/menu :: menu}"></div>
+        <br/>
+        <div th:replace="~{fragments/productList/productlist :: productlist(${products})}"></div>
+    </div>
+</div>
+</body>
+
+</html>

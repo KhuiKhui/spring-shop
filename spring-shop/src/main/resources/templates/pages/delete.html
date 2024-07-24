@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Shop | Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="w-full h-full flex items-center justify-center">
+    <div class="relative flex flex-col items-center justify-around rounded-md m-1 p-4 bg-slate-50 w-80 min-h-80">
+        <b class="self-center">Delete product</b>
+        <br/>
+        <form th:method="POST" action="#" th:action="@{/delete}" th:object="${deleteFormProduct}">
+            <div class="flex flex-col justify-between gap-2 w-full">
+                <div class="flex justify-between w-50">
+                    <b>ID: </b><input type="text" th:field="*{id}" id="del-id"
+                                      placeholder="Enter ID..."
+                                      class="w-[70%] outline outline-2 outline-slate-400"/>
+                </div>
+                <span th:if="${#fields.hasErrors('id') == false}" class="h-6"></span>
+                <span th:errors="*{id}" class="whitespace-nowrap self-end h-6"></span>
+
+            </div>
+            <br/>
+            <div class="flex justify-evenly w-full">
+                <a type="button" th:href="@{/}"
+                   class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Cancel
+                </a>
+                <button type="submit" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

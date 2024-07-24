@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div id="menu" class="grid grid-cols-5 gap-2 bg-red-200 p-3 border-2 border-black" th:fragment="menu">
+    <a th:href="@{/}"
+       class="font-semibold text-center p-2 border-2 border-black bg-slate-200 hover:bg-slate-300 rounded-md">Get
+        product</a>
+    <a th:href="@{add}"
+       class="font-semibold text-center p-2 border-2 border-black bg-slate-200 hover:bg-slate-300 rounded-md">Add
+        product</a>
+    <a th:href="@{update}"
+       class="font-semibold text-center p-2 border-2 border-black bg-slate-200 hover:bg-slate-300 rounded-md">
+        Update product
+    </a>
+    <a th:href="@{delete}"
+       class="font-semibold text-center p-2 border-2 border-black bg-slate-200 hover:bg-slate-300 rounded-md">
+        Delete product
+    </a>
+    <a th:href="@{cart}"
+       class="text-center font-semibold text-center p-2 border-2 border-black bg-green-100 hover:bg-green-200 rounded-md">Go
+        to
+        cart</a>
+</div>
+</body>
+</html>

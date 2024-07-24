@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div id="delete-product" class="flex-grow hidden p-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-300 rounded-md flex flex-col items-start justify-center" th:fragment="deletepopup">
+    <b class="self-center">Delete product</b>
+    <br/>
+    <form th:method="DELETE" action="/">
+        <div class="flex justify-between w-full">
+            <label for="delete-id">ID: </label><input name="delete-id" id="delete-id" placeholder="Enter ID..."/>
+        </div>
+        <br/>
+        <br/>
+        <div class="self-center">
+            <button type="button" th:onclick="deleteBack()" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Cancel</button>
+            <button type="submit" th:onsubmit="deleteBack()" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Delete</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

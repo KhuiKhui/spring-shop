@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Shop | Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="w-full h-full flex items-center justify-center">
+    <div class="relative flex flex-col items-center justify-around rounded-md m-1 p-4 bg-slate-100 w-80 min-h-80">
+        <b class="self-center">Add product</b>
+        <br/>
+        <form th:method="POST" action="#" th:action="@{/add}" th:object="${addFormProduct}"
+              class="flex flex-col items-center w-full">
+
+            <div class="flex flex-col justify-between gap-2 w-full">
+                <div class="flex justify-between min-w-50">
+                    <b>Name: </b><input type="text" th:field="*{name}" id="add-name"
+                                        placeholder="Enter name..."
+                                        class="w-30 outline outline-2 outline-slate-400"/>
+
+                </div>
+                <span th:if="${#fields.hasErrors('name') == false}"
+                      class="self-end whitespace-nowrap h-6"></span>
+                <span th:errors="*{name}"
+                      class="self-end whitespace-nowrap">Name Error</span>
+            </div>
+            <br/>
+            <div class="flex flex-col justify-between gap-2 w-full">
+
+                <div class="flex justify-between min-w-50">
+                    <b>Price: </b><input type="number" th:field="*{price}"
+                                         id="add-price"
+                                         placeholder="Enter price..."
+                                         class="w-30 outline outline-2 outline-slate-400"/>
+                </div>
+                <span th:if="${#fields.hasErrors('price') == false}"
+                      class="self-end whitespace-nowrap h-6"></span>
+                <span th:errors="*{price}"
+                      class="self-end whitespace-nowrap">price Error</span>
+            </div>
+
+            <br/>
+            <div class="flex justify-evenly w-full">
+                <a type="button" th:href="@{/}"
+                   class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Cancel
+                </a>
+                <button type="submit" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

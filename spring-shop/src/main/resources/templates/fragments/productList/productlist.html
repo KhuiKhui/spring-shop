@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="flex flex-col items-center justify-center bg-[antiquewhite] rounded-md m-1 p-1 border-2 border-black"
+     th:fragment="productlist(products)">
+
+    <b>Products list</b>
+    <br/>
+    <div class="grid grid-cols-5 gap-1 w-[70vw] h-[50vh] overflow overflow-y-scroll">
+
+        <div th:each="product : ${products}"
+             class="flex flex-col items-start justify-start bg-[beige] p-1 h-fit">
+            <b th:text="${product.get('name')}">[placeholder]</b>
+            <b>ID: <span th:text="${product.get('id')}"></span></b>
+            <b>Price: <span th:text="${product.get('price')}"></span></b>
+            <br/>
+            <a th:href="@{'/cart/id/{id}/add'(id=${product.get('id')})}"
+               class="text-green-600 hover:text-green-800 font-semibold self-end px-2">Add to cart</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

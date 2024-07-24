@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="w-full h-full flex items-center justify-center">
+    <div class="relative flex flex-col items-center justify-center rounded-md m-1 p-4 bg-slate-100 w-80 min-h-80">
+        <b class="self-center">Update product</b>
+        <br/>
+        <form th:method="POST" action="#" th:action="@{/update}" th:object="${updFormProduct}">
+            <div class="flex flex-col gap-2 justify-between">
+                <div class="flex justify-between w-50">
+                    <b>ID: </b><input type="text" th:field="*{id}" id="upd-id"
+                                      placeholder="Enter ID..."
+                                      class="w-[70%] outline outline-2 outline-slate-400"/>
+                </div>
+                <span th:if="${#fields.hasErrors('id') == false}" class="h-6"></span>
+                <span th:errors="*{id}" class="h-6 self-end whitespace-nowrap "></span>
+            </div>
+            <br/>
+            <div class="flex flex-col gap-2 justify-between">
+                <div class="flex justify-between w-50">
+                    <b>Name: </b><input type="text" th:field="*{name}" id="upd-name"
+                                        placeholder="Enter name..."
+                                        class="w-[70%] outline outline-2 outline-slate-400"/>
+                </div>
+                <span th:if="${#fields.hasErrors('name') == false}" class="h-6"></span>
+                <span th:errors="*{name}" class="h-6 self-end whitespace-nowrap "></span></div>
+            <br/>
+            <div class="flex flex-col gap-2 justify-between">
+                <div class="flex justify-between w-full">
+                    <b>Price: </b><input type="number" th:field="*{price}"
+                                         id="upd-price"
+                                         placeholder="Enter price..."
+                                         class="w-[70%] outline outline-2 outline-slate-400"/>
+                </div>
+                <span th:if="${#fields.hasErrors('price') == false}" class="h-6"></span>
+                <span th:errors="*{price}" class="h-6 self-end whitespace-nowrap "></span></div>
+            <br/>
+            <div class="flex justify-evenly w-full">
+                <a type="button" th:href="@{/}"
+                   class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Cancel
+                </a>
+                <button type="submit" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

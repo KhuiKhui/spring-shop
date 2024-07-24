@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div id="update-product" class="flex-grow hidden p-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-300 rounded-md flex flex-col items-start justify-center" th:fragment="updatepopup">
+    <b class="self-center">Update product</b>
+    <br/>
+    <form th:method="PUT" th:action="@{/}">
+        <div class="flex justify-between w-full">
+            <label for="update-id">ID: </label><input name="update-id" id="update-id" placeholder="Enter ID..."/>
+        </div>
+        <br/>
+        <div class="flex justify-between w-full">
+            <label for="update-name">Name: </label><input name="update-name" id="update-name" placeholder="Enter name..."/>
+        </div>
+        <br/>
+        <div class="flex justify-between w-full">
+            <label for="update-price">Price: </label><input name="update-price" id="update-price" placeholder="Enter price..."/>
+        </div>
+        <br/>
+        <div class="self-center">
+            <button type="button" th:onclick="updateBack()" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Cancel</button>
+            <button type="submit" th:onsubmit="updateBack()" class="font-semibold p-2 bg-slate-200 hover:bg-slate-400 rounded-md">Update</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

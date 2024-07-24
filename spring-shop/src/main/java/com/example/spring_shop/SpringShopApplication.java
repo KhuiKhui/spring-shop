@@ -1,6 +1,5 @@
 package com.example.spring_shop;
 
-import com.example.spring_shop.messages.Welcome;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,14 +7,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringShopApplication {
-	private static final Logger log = LoggerFactory.getLogger(SpringShopApplication.class);
-	public static void main(String[] args) {
-		SpringApplication.run(SpringShopApplication.class, args);
+    private static final Logger log = LoggerFactory.getLogger(SpringShopApplication.class);
 
-		log.info("Application is updated!!!!!");
+    public static void main(String[] args) {
+        SpringApplication.run(SpringShopApplication.class, args);
 
-		Welcome	welcome = new Welcome();
-		welcome.getMessage();
-	}
+        log.info("Application is updated!");
+
+    }
+
+//	@Bean
+//	CommandLineRunner start(ProductRepository productRepository){
+//		return args -> {
+//			Product shop = new Product("a", 1);
+//			productRepository.findAll().forEach(product -> {System.out.println(product.getId());});
+//		};
+//	}
 
 }

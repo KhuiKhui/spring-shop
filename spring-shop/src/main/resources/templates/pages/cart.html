@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Shop | Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="relative flex flex-col items-center justify-center rounded-md m-1 p-1" th:fragment="cart">
+    <a th:href="@{/}" class="absolute top-0 left-0 bg-slate-200 hover:bg-slate-300 px-2 py-1">Back</a>
+    <b>Shopping cart</b>
+    <br/>
+    <div class="w-[70vw] h-[70vh] p-4 bg-[antiquewhite] flex flex-col justify-between">
+        <table class="table-auto bg-slate-300 border-2 border-black p-1">
+            <thead class="bg-slate-100 font-bold">
+            <tr class="border-2 border-black">
+                <td class="border-2 border-black">Name</td>
+                <td class="border-2 border-black">Price</td>
+                <td class="border-2 border-black">Quantity</td>
+                <td class="border-2 border-black">Total</td>
+                <td class="border-2 border-black">Edit</td>
+            </tr>
+            </thead>
+            <tr th:each="product : ${cart}" class="border-2 border-black">
+                <td class="border-2 border-black" th:text="${product.getData().getString('name')}">Name</td>
+                <td class="border-2 border-black" th:text="${product.getData().getDouble('price')}">Price</td>
+                <td class="border-2 border-black" th:text="${product.getQuantity()}">Quantity</td>
+                <td class="border-2 border-black"
+                    th:text="${product.getQuantity()*product.getData().getDouble('price')}">Total
+                </td>
+                <td class="font-bold flex items-center gap-3 py-1">
+                    <a th:href="@{'/cart/id/{id}/add'(id=${product.getData().getInt('id')})}"
+                       class="rounded-full bg-green-200 hover:bg-green-300 w-7 h-7 text-center">+</a>
+                    <a th:href="@{'/cart/id/{id}/del'(id=${product.getData().getInt('id')})}"
+                       class="rounded-full bg-red-200 hover:bg-red-300 w-7 h-7 text-center">-</a>
+                    <a th:href="@{'/cart/id/{id}/remove'(id=${product.getData().getInt('id')})}"
+                       class="rounded-md bg-red-200 hover:bg-red-300 h-7 p-1 text-center">Remove</a>
+                </td>
+            </tr>
+
+        </table>
+        <div class="flex flex-row gap-6 items-center self-end">
+            <b>Total: <span th:text="${'$' + total}"></span></b>
+
+            <a th:href="@{/cart/checkout}"
+               class="self-end h-fit rounded-md bg-yellow-500 hover:bg-yellow-600 font-semibold p-2">Checkout</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
